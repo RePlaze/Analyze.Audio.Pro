@@ -133,8 +133,8 @@ class AudioAnalyzer:
     def selftest(self, output_dir: Path) -> Dict[str, bool]:
         """Run comprehensive selftest with synthetic signals"""
         
-        from .dsp import create_test_signals
-        from .settings import SELFTEST_SIGNALS
+        from src.audio.audio import create_test_signals
+        from src.settings.settings import SELFTEST_SIGNALS
         
         output_dir = Path(output_dir)
         test_dir = output_dir / 'selftest'
