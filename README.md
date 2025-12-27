@@ -1,37 +1,22 @@
 # analyze-audio
 
-Professional voice analysis tool. One command. Complete report.
+**Professional voice analysis. One command. Complete report.**
 
 ---
 
-## What It Does
-
-Analyzes audio or video files and generates a comprehensive voice analysis report with:
-
-- **Pitch tracking** (F0) with dual-method verification
-- **Formant analysis** (F1, F2, F3)
-- **Spectrograms** (0–5 kHz for formants, 0–10 kHz for sibilance)
-- **Long-Term Average Spectrum** (LTAS)
-- **Loudness metrics** (RMS, Peak, True Peak in dBFS)
-- **Quality checks** (clipping, voiced fraction, pitch confidence)
-
-All results are saved in a structured format with full reproducibility.
-
----
-
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
-./analyze-audio <path_to_audio_or_video>
+./bin/analyze-audio <path_to_audio_or_video>
 ```
 
 **Examples:**
 
 ```bash
-./analyze-audio voice.mp3
-./analyze-audio take.wav
-./analyze-audio interview.m4a
-./analyze-audio clip.mp4
+./bin/analyze-audio voice.mp3
+./bin/analyze-audio take.wav
+./bin/analyze-audio interview.m4a
+./bin/analyze-audio clip.mp4
 ```
 
 **Output:**
@@ -44,28 +29,40 @@ Open: open "/absolute/path/analysis_YYYYMMDD_HHMMSS"
 
 ---
 
-## Requirements
+## 📊 What It Does
 
-- **macOS** (tested on macOS 14+)
-- **Praat** (installed at `/Applications/Praat.app`)
-- **Python 3.8+** with packages:
-  - `numpy`
-  - `scipy`
-  - `matplotlib`
-  - `pandas`
-  - `soundfile`
-  - `pysptk` (for pitch verification)
-- **FFmpeg** (optional, required only for video input)
+Analyzes audio or video files and generates a comprehensive voice analysis report:
 
-**Install Python dependencies:**
+- **Pitch tracking** (F0) with dual-method verification
+- **Formant analysis** (F1, F2, F3)
+- **Spectrograms** (0–5 kHz for formants, 0–10 kHz for sibilance)
+- **Long-Term Average Spectrum** (LTAS)
+- **Loudness metrics** (RMS, Peak, True Peak in dBFS)
+- **Quality checks** (clipping, voiced fraction, pitch confidence)
 
+All results are saved in a structured format with full reproducibility.
+
+---
+
+## 📋 Requirements
+
+**macOS** (tested on macOS 14+)
+
+**Praat** — installed at `/Applications/Praat.app`
+
+**Python 3.8+** with packages:
 ```bash
 pip3 install numpy scipy matplotlib pandas soundfile pysptk
 ```
 
+**FFmpeg** (optional, required only for video input)
+```bash
+brew install ffmpeg
+```
+
 ---
 
-## Output Structure
+## 📁 Output Structure
 
 Each analysis creates a timestamped folder:
 
@@ -89,7 +86,7 @@ analysis_YYYYMMDD_HHMMSS/
 
 ---
 
-## Report Contents
+## 📈 Report Contents
 
 ### Summary Cards
 
@@ -116,7 +113,7 @@ Key metrics at a glance:
 
 ---
 
-## Technical Details
+## ⚙️ Technical Details
 
 ### Audio Processing
 
@@ -158,7 +155,7 @@ Automatic sanity checks for:
 
 ---
 
-## Philosophy
+## 🎯 Philosophy
 
 **One command. No flags. No modes.**
 
@@ -185,20 +182,20 @@ Everything is automatic:
 
 ---
 
-## Troubleshooting
+## 🔧 Troubleshooting
 
-**"Praat not found"**
+### "Praat not found"
 
 Ensure Praat is installed at `/Applications/Praat.app`. The script will check and provide instructions if missing.
 
-**"Python module not found"**
+### "Python module not found"
 
 Install missing packages:
 ```bash
 pip3 install <package_name>
 ```
 
-**"FFmpeg not found" (video input)**
+### "FFmpeg not found" (video input)
 
 Install FFmpeg:
 ```bash
@@ -207,7 +204,7 @@ brew install ffmpeg
 
 Or use audio-only input (WAV, MP3, etc.).
 
-**Empty metrics in report**
+### Empty metrics in report
 
 Check `logs/praat.log` for Praat errors. Common issues:
 - Corrupted audio file
@@ -216,16 +213,15 @@ Check `logs/praat.log` for Praat errors. Common issues:
 
 ---
 
-## License
+## 📄 License
 
 MIT License. See [LICENSE](LICENSE) for details.
 
 ---
 
-## Credits
+## 🙏 Credits
 
 Built with:
 - **Praat** (phonetic analysis)
 - **FFmpeg** (audio processing)
 - **Python** (visualization and automation)
-
