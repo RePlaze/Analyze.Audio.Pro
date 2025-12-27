@@ -121,7 +121,8 @@ Key metrics at a glance:
 - **Output**: WAV PCM, mono, 48 kHz
 - **SHA256**: Calculated for input file integrity
 
-### Analysis Parameters
+<details>
+<summary><strong>Analysis Parameters</strong></summary>
 
 **STFT:**
 - Window: 25 ms (Hann)
@@ -142,6 +143,8 @@ Key metrics at a glance:
 
 **LTAS:**
 - Bandwidth: 50 Hz
+
+</details>
 
 ### Quality Checks
 
