@@ -56,8 +56,9 @@ ENV/
 *.aac
 *.flac
 *.ogg
-!src/*.mp4
-!src/*.wav
+
+# Source files (private)
+src/
 
 # macOS
 .DS_Store

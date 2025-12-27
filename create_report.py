@@ -39,7 +39,7 @@ PITCH_FLOOR = 60
 PITCH_CEILING = 400
 
 def normalize_pitch(df):
-    """Нормализует колонки pitch DataFrame"""
+    """Нормализует колонки pitch DataFrame (time_s, f0_hz, voiced)"""
     if df.empty:
         return pd.DataFrame({'time_s': [], 'f0_hz': [], 'voiced': []})
     
@@ -75,7 +75,7 @@ def normalize_pitch(df):
     return out[['time_s', 'f0_hz', 'voiced']]
 
 def normalize_formants(df):
-    """Нормализует колонки formants DataFrame"""
+    """Нормализует колонки formants DataFrame (time_s, f1_hz, f2_hz, f3_hz, voiced)"""
     if df.empty:
         return pd.DataFrame({'time_s': [], 'f1_hz': [], 'f2_hz': [], 'f3_hz': [], 'voiced': []})
     
@@ -118,7 +118,7 @@ def normalize_formants(df):
     return out[['time_s', 'f1_hz', 'f2_hz', 'f3_hz', 'voiced']]
 
 def normalize_ltas(df):
-    """Нормализует колонки LTAS DataFrame"""
+    """Нормализует колонки LTAS DataFrame (freq_hz, db)"""
     if df.empty:
         return pd.DataFrame({'freq_hz': [], 'db': []})
     
@@ -147,7 +147,7 @@ def normalize_ltas(df):
     return out[['freq_hz', 'db']].dropna()
 
 def load_data(results_dir, file_name):
-    """Загружает данные из data/ (Acceptance Checklist структура)"""
+    """Загружает данные из data/: pitch.csv, formants.csv, ltas.csv, metrics.json"""
     data_dir = Path(results_dir) / 'data'
     
     # Pitch CSV

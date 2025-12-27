@@ -218,7 +218,7 @@ Check `logs/praat.log` for Praat errors. Common issues:
 
 ## License
 
-This tool is provided as-is for professional voice analysis.
+MIT License. See [LICENSE](LICENSE) for details.
 
 ---
 
