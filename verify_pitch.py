@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-Pitch verification для voice-analyze
-Acceptance Checklist: второй метод pitch (CREPE/pyin) для сравнения
+Верификация pitch вторым методом (pyin) для кросс-проверки результатов Praat
 """
 
 import sys

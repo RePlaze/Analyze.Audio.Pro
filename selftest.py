@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-Selftest для voice-analyze
-Acceptance Checklist: автотесты (синус, гармоники, тишина, шум, compare)
+Автотесты: синус, гармоники, тишина, шум, сравнение
 """
 
 import sys

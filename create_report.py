@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
+Генерация отчетов: визуализация, метрики, HTML/PDF/PNG
 Apple-grade отчет для voice-analyze
-Acceptance Checklist compliant: report.png/pdf/html, spectrogram.npz, manifest.json updates
 """
 
 import sys
