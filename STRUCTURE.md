@@ -8,27 +8,27 @@ Voice_Settings/
 │   └── analyze-audio          # Главный исполняемый скрипт
 │
 ├── cli/
-│   └── main.py                # CLI интерфейс: парсинг аргументов
+│   └── main.py                # CLI интерфейс
 │
 ├── src/
-│   ├── extractors/            # Сбор метрик
+│   ├── metrics/               # Сбор метрик
 │   │   ├── praat.py           # Извлечение данных из Praat
-│   │   └── verify_pitch.py    # Верификация pitch (pyin)
+│   │   └── verify_pitch.py    # Верификация pitch
 │   │
-│   ├── reporters/             # Упаковка вывода
-│   │   ├── visual.py          # Генерация визуализаций (ReportGenerator)
-│   │   └── create_report.py   # Legacy: прямой вызов генерации отчетов
+│   ├── output/                # Генерация отчетов
+│   │   ├── reports.py         # Генерация визуализаций
+│   │   └── create_report.py   # Legacy: прямой вызов
 │   │
-│   ├── dsp/                   # Обработка сигналов
-│   │   └── dsp.py             # STFT, спектрограммы, фильтры
+│   ├── audio/                 # Обработка аудио
+│   │   └── audio.py           # STFT, спектрограммы, фильтры
 │   │
-│   ├── core/                  # Основной пайплайн
-│   │   ├── pipeline.py        # Orchestration: AudioAnalyzer
-│   │   └── selftest.py        # Автотесты
+│   ├── main/                  # Основной пайплайн
+│   │   ├── analyzer.py        # AudioAnalyzer
+│   │   └── tests.py           # Автотесты
 │   │
-│   └── config/                # Настройки и схемы
+│   └── settings/              # Настройки
 │       ├── settings.py        # Параметры анализа
-│       └── schema.py          # Валидация данных
+│       └── validation.py      # Валидация данных
 │
 ├── src/                       # Приватные исходные файлы (игнорируется git)
 │   └── ...
@@ -46,29 +46,29 @@ Voice_Settings/
 ### `cli/main.py`
 CLI интерфейс: парсинг аргументов, валидация, вызов `AudioAnalyzer`.
 
-### `src/extractors/`
+### `src/metrics/`
 **Сбор метрик:**
 - `praat.py` — извлечение данных из Praat (pitch, formants, LTAS, метрики)
 - `verify_pitch.py` — верификация pitch вторым методом (pyin)
 
-### `src/reporters/`
-**Упаковка вывода:**
-- `visual.py` — генерация отчетов (HTML, PDF, PNG) через `ReportGenerator`
+### `src/output/`
+**Генерация отчетов:**
+- `reports.py` — генерация отчетов (HTML, PDF, PNG) через `ReportGenerator`
 - `create_report.py` — legacy модуль для прямого вызова
 
-### `src/dsp/`
-**Обработка сигналов:**
-- `dsp.py` — STFT, спектрограммы, интерполяция, фильтрация
+### `src/audio/`
+**Обработка аудио:**
+- `audio.py` — STFT, спектрограммы, интерполяция, фильтрация
 
-### `src/core/`
+### `src/main/`
 **Основной пайплайн:**
-- `pipeline.py` — `AudioAnalyzer`: orchestration всего процесса
-- `selftest.py` — автотесты (синус, гармоники, тишина, шум)
+- `analyzer.py` — `AudioAnalyzer`: orchestration всего процесса
+- `tests.py` — автотесты (синус, гармоники, тишина, шум)
 
-### `src/config/`
+### `src/settings/`
 **Настройки:**
 - `settings.py` — все параметры анализа (STFT, pitch, formants, LTAS)
-- `schema.py` — схемы данных, валидация, `manifest.json` структура
+- `validation.py` — схемы данных, валидация, `manifest.json` структура
 
 ## Поток данных
 
@@ -77,15 +77,15 @@ Input file
     ↓
 [cli/main.py] - парсинг аргументов
     ↓
-[core/pipeline.py] - AudioAnalyzer
+[main/analyzer.py] - AudioAnalyzer
     ↓
-[dsp/dsp.py] - обработка аудио (STFT, конвертация)
+[audio/audio.py] - обработка аудио (STFT, конвертация)
     ↓
-[extractors/praat.py] - извлечение метрик (Praat)
+[metrics/praat.py] - извлечение метрик (Praat)
     ↓
-[extractors/verify_pitch.py] - верификация pitch
+[metrics/verify_pitch.py] - верификация pitch
     ↓
-[reporters/visual.py] - генерация отчетов (HTML/PDF/PNG)
+[output/reports.py] - генерация отчетов (HTML/PDF/PNG)
     ↓
 Output: analysis_YYYYMMDD_HHMMSS/
 ```

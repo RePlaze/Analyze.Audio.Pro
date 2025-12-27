@@ -9,9 +9,9 @@ import time
 from pathlib import Path
 from typing import Optional, List
 
-from src.core.pipeline import AudioAnalyzer
-from src.config.schema import ValidationError
-from src.config.settings import validate_dependencies
+from src.main.analyzer import AudioAnalyzer
+from src.settings.validation import ValidationError
+from src.settings.settings import validate_dependencies
 
 
 def create_parser() -> argparse.ArgumentParser:
