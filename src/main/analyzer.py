@@ -42,12 +42,17 @@ class AudioAnalyzer:
         start_time = time.time()
         output_dir = Path(output_dir)
         
+        # Progress bar
+        progress = ProgressBar(total=7, desc="Analyzing")
+        
         try:
             # Stage 1: Input validation (basic file check)
+            progress.update(1)
             input_validation = self._validate_input_file(input_file)
             # Don't validate duration yet - will be done after audio preparation
             
             # Stage 2: Audio preprocessing  
+            progress.update(1)
             prepared_audio = self._prepare_audio_stage(input_file, output_dir)
             
             # Stage 2b: Update input validation with actual audio properties
@@ -55,18 +60,23 @@ class AudioAnalyzer:
             self.warnings.extend(input_validation.validate())
             
             # Stage 3: Praat-based analysis
+            progress.update(1)
             self._praat_analysis_stage(prepared_audio, output_dir)
             
             # Stage 4: Spectral analysis
+            progress.update(1)
             self._spectral_analysis_stage(prepared_audio, output_dir)
             
             # Stage 5: Data validation
+            progress.update(1)
             validations = self._validate_analysis_outputs(output_dir)
             
             # Stage 6: Report generation
+            progress.update(1)
             self._generate_reports_stage([prepared_audio], ['audio'], output_dir, 'single')
             
             # Stage 7: Create manifest
+            progress.update(1)
             execution_time = time.time() - start_time
             result = self._create_analysis_result(
                 input_validation, validations, execution_time
@@ -74,10 +84,12 @@ class AudioAnalyzer:
             
             self._write_manifest(output_dir, result)
             
+            progress.finish()
             return result
             
         except Exception as e:
             # Log pipeline failure
+            progress.finish()
             self._log_pipeline_failure(output_dir, str(e), time.time() - start_time)
             raise
     
@@ -87,8 +99,12 @@ class AudioAnalyzer:
         start_time = time.time()
         output_dir = Path(output_dir)
         
+        # Progress bar
+        progress = ProgressBar(total=8, desc="Comparing")
+        
         try:
             # Validate both input files
+            progress.update(1)
             raw_validation = self._validate_input_file(raw_file)
             processed_validation = self._validate_input_file(processed_file)
             
@@ -96,20 +112,27 @@ class AudioAnalyzer:
             self.warnings.extend(processed_validation.validate())
             
             # Prepare both audio files
+            progress.update(1)
             raw_audio = self._prepare_audio_stage(raw_file, output_dir, suffix='_raw')
+            progress.update(1)
             processed_audio = self._prepare_audio_stage(processed_file, output_dir, suffix='_processed')
             
             # Analyze both files
+            progress.update(1)
             self._praat_analysis_stage(raw_audio, output_dir, suffix='_raw')
+            progress.update(1)
             self._praat_analysis_stage(processed_audio, output_dir, suffix='_processed')
             
             # Spectral analysis with shared reference
+            progress.update(1)
             self._spectral_analysis_stage_compare([raw_audio, processed_audio], output_dir)
             
             # Validation (use raw file as primary)
+            progress.update(1)
             validations = self._validate_analysis_outputs(output_dir, suffix='_raw')
             
             # Generate comparison report
+            progress.update(1)
             self._generate_reports_stage(
                 [raw_audio, processed_audio], 
                 ['raw', 'processed'], 
@@ -125,9 +148,11 @@ class AudioAnalyzer:
             
             self._write_manifest(output_dir, result)
             
+            progress.finish()
             return result
             
         except Exception as e:
+            progress.finish()
             self._log_pipeline_failure(output_dir, str(e), time.time() - start_time)
             raise
     
