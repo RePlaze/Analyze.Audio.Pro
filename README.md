@@ -9,16 +9,16 @@
 ## 🚀 Quick Start
 
 ```bash
-./bin/analyze-audio <path_to_audio_or_video>
+/analyze-audio <path_to_audio_or_video>
 ```
 
 **Examples:**
 
 ```bash
-./bin/analyze-audio voice.mp3
-./bin/analyze-audio take.wav
-./bin/analyze-audio interview.m4a
-./bin/analyze-audio clip.mp4
+/analyze-audio voice.mp3
+/analyze-audio take.wav
+/analyze-audio interview.m4a
+/analyze-audio clip.mp4
 ```
 **Output:**
 
