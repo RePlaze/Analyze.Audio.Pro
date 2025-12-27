@@ -40,6 +40,7 @@ Analyzes audio or video files and generates a comprehensive voice analysis repor
 - **Long-Term Average Spectrum** (LTAS)
 - **Loudness metrics** (RMS, Peak, True Peak in dBFS)
 - **Quality checks** (clipping, voiced fraction, pitch confidence)
+- **RUS/ENG support & Dark theme available**
 
 All results are saved in a structured format with full reproducibility.
 
