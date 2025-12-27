@@ -321,7 +321,7 @@ class AudioProcessor:
 def create_test_signals(output_dir: Path) -> Dict[str, Path]:
     """Create test signals for selftest mode"""
     
-    from .settings import SELFTEST_SIGNALS
+    from src.settings.settings import SELFTEST_SIGNALS
     
     output_dir.mkdir(exist_ok=True)
     test_files = {}

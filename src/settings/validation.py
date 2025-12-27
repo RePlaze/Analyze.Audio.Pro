@@ -11,7 +11,7 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 
-from src.config.settings import (
+from src.settings.settings import (
     PITCH_COLUMNS, FORMANTS_COLUMNS, LTAS_COLUMNS, REQUIRED_METRICS,
     MIN_DURATION, MAX_DURATION, MIN_VOICED_FRACTION, MAX_CLIPPING_PERCENT,
     MAX_PEAK_DBFS, MIN_PITCH_CONFIDENCE, MAX_NAN_RATIO, MIN_FORMANT_COVERAGE,
