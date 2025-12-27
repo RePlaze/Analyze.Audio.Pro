@@ -58,7 +58,15 @@ ENV/
 *.ogg
 
 # Source files (private - исходные аудио/видео)
-src/
+# Игнорируем только приватные файлы в src/, но не код проекта
+src/*.mp4
+src/*.wav
+src/*.mp3
+src/*.m4a
+src/*.txt
+src/*.html
+src/*.aiff
+src/*.flac
 
 # macOS
 .DS_Store
