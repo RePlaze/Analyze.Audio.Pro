@@ -726,121 +726,164 @@ class ReportGenerator:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voice Analysis Report</title>
     <style>
-        body {{
-            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+        * {{
             margin: 0;
-            padding: 20px;
-            background: #f8f9fa;
-            color: #212529;
+            padding: 0;
+            box-sizing: border-box;
+        }}
+        body {{
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #000000;
+            color: #f5f5f7;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
         }}
         .container {{
             max-width: 1200px;
             margin: 0 auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
+            background: #000000;
         }}
         .header {{
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
+            background: #000000;
+            color: #f5f5f7;
+            padding: 80px 20px 60px;
             text-align: center;
         }}
         .header h1 {{
             margin: 0;
-            font-size: 2.5em;
-            font-weight: 300;
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            color: #FF6B35;
+            margin-bottom: 12px;
         }}
         .header p {{
-            margin: 10px 0 0 0;
-            opacity: 0.9;
+            margin: 12px 0 0 0;
+            font-size: 21px;
+            color: #86868b;
+            font-weight: 400;
         }}
         .content {{
-            padding: 30px;
+            padding: 60px 20px;
+            background: #000000;
         }}
         .summary-grid {{
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            margin-bottom: 60px;
         }}
         .summary-card {{
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 6px;
-            padding: 20px;
+            background: #1d1d1f;
+            border-radius: 12px;
+            padding: 24px;
             text-align: center;
+            transition: transform 0.2s, background 0.2s;
+        }}
+        .summary-card:hover {{
+            transform: translateY(-2px);
+            background: #2d2d2f;
         }}
         .summary-card .label {{
-            font-size: 0.9em;
-            color: #6c757d;
+            font-size: 13px;
+            color: #86868b;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.08em;
             margin-bottom: 8px;
+            font-weight: 400;
         }}
         .summary-card .value {{
-            font-size: 1.8em;
+            font-size: 32px;
             font-weight: 600;
-            color: #212529;
+            color: #f5f5f7;
+            letter-spacing: -0.01em;
         }}
         .report-image {{
             text-align: center;
-            margin: 40px 0;
+            margin: 60px 0;
         }}
         .report-image img {{
             max-width: 100%;
             height: auto;
-            border-radius: 6px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 18px;
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.15);
+        }}
+        .section-title {{
+            font-size: 40px;
+            font-weight: 600;
+            color: #f5f5f7;
+            text-align: center;
+            margin: 80px 0 40px;
+            letter-spacing: -0.01em;
         }}
         .warnings {{
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 6px;
-            padding: 20px;
-            margin: 20px 0;
+            background: #1d1d1f;
+            border-radius: 12px;
+            padding: 32px;
+            margin: 40px 0;
         }}
         .warnings h3 {{
             margin-top: 0;
-            color: #856404;
+            margin-bottom: 20px;
+            color: #FF6B35;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }}
         .warning-item {{
-            margin: 10px 0;
-            padding: 8px 12px;
-            background: rgba(255, 193, 7, 0.1);
-            border-left: 3px solid #ffc107;
+            margin: 12px 0;
+            padding: 16px 20px;
+            background: rgba(255, 107, 53, 0.1);
+            border-left: 4px solid #FF6B35;
+            border-radius: 8px;
+            color: #f5f5f7;
         }}
         .quality-score {{
             text-align: center;
-            margin: 30px 0;
+            margin: 60px 0;
         }}
         .quality-score .score {{
-            font-size: 3em;
-            font-weight: bold;
-            color: #28a745;
+            font-size: 72px;
+            font-weight: 600;
+            color: #FF6B35;
+            letter-spacing: -0.02em;
         }}
         .comparison-table {{
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 40px 0;
+            background: #1d1d1f;
+            border-radius: 12px;
+            overflow: hidden;
         }}
         .comparison-table th,
         .comparison-table td {{
-            padding: 12px;
+            padding: 20px;
             text-align: left;
-            border-bottom: 1px solid #dee2e6;
+            border-bottom: 1px solid #2d2d2f;
         }}
         .comparison-table th {{
-            background: #f8f9fa;
+            background: #000000;
             font-weight: 600;
+            color: #FF6B35;
+            font-size: 17px;
+        }}
+        .comparison-table td {{
+            color: #f5f5f7;
+        }}
+        .comparison-table tr:last-child td {{
+            border-bottom: none;
         }}
         .footer {{
-            background: #f8f9fa;
-            padding: 20px;
+            background: #000000;
+            padding: 40px 20px;
             text-align: center;
-            color: #6c757d;
-            font-size: 0.9em;
+            color: #86868b;
+            font-size: 14px;
+            border-top: 1px solid #1d1d1f;
         }}
     </style>
 </head>
@@ -852,6 +895,7 @@ class ReportGenerator:
         </div>
         
         <div class="content">
+            <h2 class="section-title">Get the highlights.</h2>
             <div class="summary-grid">
                 <div class="summary-card">
                     <div class="label">Duration</div>
@@ -879,6 +923,7 @@ class ReportGenerator:
                 </div>
             </div>
             
+            <h2 class="section-title">Take a closer look.</h2>
             <div class="report-image">
                 <img src="report.png" alt="Voice Analysis Report">
             </div>

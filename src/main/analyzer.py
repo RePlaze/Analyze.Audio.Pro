@@ -20,6 +20,7 @@ from src.settings.validation import (
 from src.metrics.praat import extract_audio_data
 from src.audio.audio import AudioProcessor
 from src.output.reports import ReportGenerator
+from src.main.progress import ProgressBar
 
 
 class AudioAnalyzer:
