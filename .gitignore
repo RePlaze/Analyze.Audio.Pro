@@ -57,7 +57,7 @@ ENV/
 *.flac
 *.ogg
 
-# Source files (private)
+# Source files (private - исходные аудио/видео)
 src/
 
 # macOS
