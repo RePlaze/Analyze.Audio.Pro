@@ -1,5 +1,5 @@
 """
-Data schemas and validation contracts
+Схемы данных: валидация метрик, manifest.json структура
 Apple-grade: fail fast, never lie about data quality
 """
 

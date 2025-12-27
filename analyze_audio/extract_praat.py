@@ -1,5 +1,6 @@
 """
-Praat extraction module - Apple-grade: deterministic, logged, validated
+Извлечение данных из Praat: pitch, formants, LTAS, метрики
+Apple-grade: deterministic, logged, validated
 """
 
 import subprocess

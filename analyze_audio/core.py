@@ -1,6 +1,6 @@
 """
-Core audio analysis pipeline - Apple-grade execution engine
-Fail-fast validation, deterministic results, complete traceability
+Основной пайплайн анализа: извлечение аудио, Praat, визуализация
+Apple-grade execution engine
 """
 
 import json

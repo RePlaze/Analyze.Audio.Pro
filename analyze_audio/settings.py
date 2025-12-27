@@ -1,6 +1,6 @@
 """
-Centralized settings for audio analysis pipeline
-All thresholds and parameters in one place - Apple-grade discipline
+Настройки анализа: параметры STFT, pitch, formants, LTAS
+Apple-grade discipline
 """
 
 import os

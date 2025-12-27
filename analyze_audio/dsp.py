@@ -1,5 +1,5 @@
 """
-Digital Signal Processing utilities
+DSP операции: STFT, спектрограммы, интерполяция, фильтрация
 Apple-grade: vectorized, validated, deterministic
 """
 

@@ -1,6 +1,6 @@
 """
-Report generation module - Apple-grade visual output
-Clean layouts, honest data representation, no false beauty
+Генерация отчетов: HTML, PDF, PNG, manifest.json
+Apple-grade visual output
 """
 
 import json

@@ -1,6 +1,6 @@
 """
-Command Line Interface - Apple-grade UX
-One-command operation, clear output, fail-fast feedback
+CLI интерфейс: парсинг аргументов, вызов core пайплайна
+Apple-grade UX
 """
 
 import sys
