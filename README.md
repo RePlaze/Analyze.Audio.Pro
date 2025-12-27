@@ -1,7 +1,9 @@
 # analyze-audio
 
 **Professional voice analysis. One command. Complete report.**
-
+![Screenshot 2025-12-27 at 16.53.36.png](Screenshot%202025-12-27%20at%2016.53.36.png)
+![Screenshot 2025-12-27 at 16.53.56.png](Screenshot%202025-12-27%20at%2016.53.56.png)
+![Screenshot 2025-12-27 at 16.54.15.png](Screenshot%202025-12-27%20at%2016.54.15.png)
 ---
 
 ## 🚀 Quick Start
@@ -18,7 +20,6 @@
 ./bin/analyze-audio interview.m4a
 ./bin/analyze-audio clip.mp4
 ```
-
 **Output:**
 
 ```
